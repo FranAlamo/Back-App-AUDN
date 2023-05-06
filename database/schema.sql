@@ -111,3 +111,14 @@ TABLESPACE pg_default;
 
 ALTER TABLE IF EXISTS public.usuario
     OWNER to postgres;
+
+
+-- Insertar valores en tabla genero
+
+INSERT INTO public.genero(
+	id, nombre)
+	VALUES (1, 'Cumbia'),
+	(2, 'Reggaeton'),
+	(3, 'Floklore'),
+	(4, 'Jazz'),
+	(5, 'Rock');
