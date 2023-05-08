@@ -113,7 +113,7 @@ ALTER TABLE IF EXISTS public.usuario
     OWNER to postgres;
 
 
--- Insertar valores en tabla genero
+-- Insertar datos en tabla genero
 
 INSERT INTO public.genero(
 	id, nombre)
@@ -122,3 +122,33 @@ INSERT INTO public.genero(
 	(3, 'Floklore'),
 	(4, 'Jazz'),
 	(5, 'Rock');
+
+-- Insert datos en tabla musica
+
+INSERT INTO public.musica(
+	id, nombre, duracion, artista, id_genero)
+	VALUES (1, 'Latidos', '3:25', 'Matias Valdez', 1),
+	(2, 'Hechicera', '3:45', 'Lucas Sugo', 1),
+	(3, 'Universo paralelo', '2:50', 'La Conga', 1),
+	(4, 'Bombon asesino', '2:37', 'Los Palmeras', 1),
+	(5, 'Que tiene la noche', '3:15', 'Cacho Ramos', 1),
+	(6, 'Mayores', '2:45', 'Becky G', 2),
+	(7, '100', '3:10', 'Ozuna', 2),
+	(8, 'Mi cama', '3:00', 'J Balvin', 2),
+	(9, 'Soltera', '3:30', 'Daddy Yanquee', 2),
+	(10, 'Felices los 4', '2:55', 'Maluma', 2),
+	(11, 'Isla patrulla', '3:10', 'Braulio Lopez', 3),
+	(12, 'Morir en la capital', '4:20', 'Pablo Estramín', 3),
+	(13, 'Donde yace mi corazón', '4:10', 'Larbanois & Carrero', 3),
+	(14, 'Bendito', '2:55', 'Maciegas', 3),
+	(15, 'Doña soledad', '2:50', 'Alfredo Sitarroza', 3),
+	(16, 'Back to Black', '3:35', 'Amy Winehouse', 4),
+	(17, 'What a Wonderful World', '3:00', 'Louis Armstrong', 4),
+	(18, 'Respect', '2:25', 'Aretha Franklin', 4),
+	(19, 'Dont know Why', '3:40', 'Norah Jones', 4),
+	(20, 'Feeling Good', '3:55', 'Nina Simone', 4),
+	(21, 'Sweet Child O Mine', '4:45', 'Guns N Roses', 5),
+	(22, '(I Cant get No) Satisfaction', '4:00', 'The Rolling Stones', 5),
+	(23, 'Hotel California', '3:15', 'Eagles', 5),
+	(24, 'Light My Fire', '2:55', 'The Doors', 5),
+	(25, 'Losing My Religion', '3:30', 'R.E.M.', 5);
