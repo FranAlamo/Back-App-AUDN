@@ -4,7 +4,7 @@ const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
 require("dotenv").config();
-
+const cancionesRoutes = require("./routes/cancionesRoutes")
 const usuarioRoutes = require("./routes/usuarioRoutes");
 
 const app = express();
@@ -14,7 +14,7 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(cors());
 
-
+app.use("/api", cancionesRoutes);
 app.use("/api", usuarioRoutes);
 
 
