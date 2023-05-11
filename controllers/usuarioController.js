@@ -33,10 +33,10 @@ exports.registroUsuario = async (req, res) => {
 };
 
 exports.loginUsuario = async (req, res) => {
-  const { email, nombre_usuario, password } = req.body;
+  const { email, password } = req.body;
 
   knex("usuario")
-    .where({ nombre_usuario: nombre_usuario})
+    .where({ email: email } ).orWhere({nombre_usuario:email})
     .then(async (resultado) => {
       if (!resultado.length) {
         res
@@ -54,17 +54,19 @@ exports.loginUsuario = async (req, res) => {
         });
         return;
       }
-
+      const usuario =  {
+        name: resultado[0].nombre_usuario,
+        email: resultado[0].email,
+        id: resultado[0].id,
+      }
       const token = jwt.sign(
-        {
-          name: resultado[0].nombre,
-          email: resultado[0].email,
-        },
+      usuario,
         process.env.TOKEN_SECRET
       );
       res.status(200).json({
         mensaje: "El usuario se ha logeado correctamente",
         token: token,
+        usuario
       });
     })
     .catch((error) => {
