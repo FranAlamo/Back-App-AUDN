@@ -34,8 +34,10 @@ exports.perfil = async (req, res) => {
 }
 //buscar por genero
 exports.filtroGenero = async (req, res) => {
+    const nombre_genero = req.params.nombre_genero;
     try {
-        const resultado = await knex.select('nombre', 'artista', 'nombre_genero').from('musica').join('genero', 'musica.id_genero', '=', 'genero.id');
+        const resultado = await knex.select('nombre', 'artista', 'nombre_genero').from('musica').join('genero', 'musica.id_genero', '=', 'genero.id')
+        .where({nombre_genero});
         res.status(200).json({ musica: resultado });
     } catch (error) {
         res.status(400).json({ error: error.message })
