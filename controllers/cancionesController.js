@@ -4,7 +4,7 @@ const knex = require("../config/knexfile");
 exports.listaCanciones = async (req, res) => {
     try {
         console.log(req.user)
-        const resultado = await knex.select("artista").from("musica");
+        const resultado = await knex.select("id", "artista").from("musica");
         res.status(200).json({ musica: resultado });
     } catch (error) {
         res.status(400).json({ error: error.message })
@@ -25,8 +25,8 @@ exports.perfil = async (req, res) => {
     const id = +req.params.id;
     try {
         const usuario = await knex.select('nombre_usuario', 'email')
-  .from('usuario')
-  .where({ id });
+            .from('usuario')
+            .where({ id });
         res.status(200).json({ usuario: usuario });
     } catch (error) {
         res.status(400).json({ error: error.message })
@@ -37,7 +37,7 @@ exports.filtroGenero = async (req, res) => {
     const nombre_genero = req.params.nombre_genero;
     try {
         const resultado = await knex.select('nombre', 'artista', 'nombre_genero').from('musica').join('genero', 'musica.id_genero', '=', 'genero.id')
-        .where({nombre_genero});
+            .where({ nombre_genero });
         res.status(200).json({ musica: resultado });
     } catch (error) {
         res.status(400).json({ error: error.message })

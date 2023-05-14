@@ -25,9 +25,9 @@ CREATE TABLE IF NOT EXISTS public.musica
     id integer NOT NULL DEFAULT nextval('musica_id_seq'::regclass),
     nombre character varying COLLATE pg_catalog."default",
     duracion character varying COLLATE pg_catalog."default",
-    foto bytea,
     artista character varying COLLATE pg_catalog."default",
     id_genero integer,
+    imagen character varying COLLATE pg_catalog."default",
     CONSTRAINT pk_musica PRIMARY KEY (id),
     CONSTRAINT id_genero FOREIGN KEY (id_genero)
         REFERENCES public.genero (id) MATCH SIMPLE
@@ -152,3 +152,103 @@ INSERT INTO public.musica(
 	(23, 'Hotel California', '3:15', 'Eagles', 5),
 	(24, 'Light My Fire', '2:55', 'The Doors', 5),
 	(25, 'Losing My Religion', '3:30', 'R.E.M.', 5);
+
+    UPDATE musica
+SET imagen = '/cumbia/matiasValdez.jpg'
+WHERE id = 1 AND imagen IS NULL;
+
+UPDATE musica
+SET imagen = '/cumbia/lucasSugo.jpg'
+WHERE id = 2 AND imagen IS NULL;
+
+UPDATE musica
+SET imagen = '/cumbia/laConga.jpg'
+WHERE id = 3 AND imagen IS NULL;
+
+UPDATE musica
+SET imagen = '/cumbia/losPalmeras.jpg'
+WHERE id = 4 AND imagen IS NULL;
+
+UPDATE musica
+SET imagen = '/cumbia/chachoRamos.jpg'
+WHERE id = 5 AND imagen IS NULL;
+
+UPDATE musica
+SET imagen = '/regueton/beckyG.jpg'
+WHERE id = 6 AND imagen IS NULL;
+
+UPDATE musica
+SET imagen = '/regueton/ozuna.jpg'
+WHERE id = 7 AND imagen IS NULL;
+
+UPDATE musica
+SET imagen = '/Rock/rem.jpg'
+WHERE id = 8 AND imagen IS NULL;
+
+UPDATE musica
+SET imagen = '/regueton/jBalvin.jpg'
+WHERE id = 9 AND imagen IS NULL;
+
+UPDATE musica
+SET imagen = '/regueton/daddyYanquee.jpg'
+WHERE id = 10 AND imagen IS NULL;
+
+UPDATE musica
+SET imagen = '/regueton/maluma.jpg'
+WHERE id = 11 AND imagen IS NULL;
+
+UPDATE musica
+SET imagen = '/folklore/braulioLopez.jpg'
+WHERE id = 12 AND imagen IS NULL;
+
+UPDATE musica
+SET imagen = '/folklore/pabloEstramin.jpg'
+WHERE id = 13 AND imagen IS NULL;
+
+UPDATE musica
+SET imagen = '/folklore/larbanoisCarrero.jpg'
+WHERE id = 14 AND imagen IS NULL;
+
+UPDATE musica
+SET imagen = '/folklore/maciegas.jpg'
+WHERE id = 15 AND imagen IS NULL;
+
+UPDATE musica
+SET imagen = '/folklore/zitarroza.jpg'
+WHERE id = 16 AND imagen IS NULL;
+
+UPDATE musica
+SET imagen = '/Jazz/amy.jpg'
+WHERE id = 17 AND imagen IS NULL;
+
+UPDATE musica
+SET imagen = '/Jazz/louis.jpg'
+WHERE id = 18 AND imagen IS NULL;
+
+UPDATE musica
+SET imagen = '/Jazz/aretha.jpg'
+WHERE id = 19 AND imagen IS NULL;
+
+UPDATE musica
+SET imagen = '/jazz/norah_jones1.jpg'
+WHERE id = 20 AND imagen IS NULL;
+
+UPDATE musica
+SET imagen = '/Jazz/nina.jpg'
+WHERE id = 21 AND imagen IS NULL;
+
+UPDATE musica
+SET imagen = '/Rock/guns.jpg'
+WHERE id = 22 AND imagen IS NULL;
+
+UPDATE musica
+SET imagen = '/Rock/rollingStones.png'
+WHERE id = 23 AND imagen IS NULL;
+
+UPDATE musica
+SET imagen = '/Rock/theEagles.jpg'
+WHERE id = 24 AND imagen IS NULL;
+
+UPDATE musica
+SET imagen = '/Rock/theDoors.jpg'
+WHERE id = 25 AND imagen IS NULL;

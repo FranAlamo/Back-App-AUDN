@@ -10,5 +10,4 @@ routes.get("/perfil", verifyToken, runValidation, perfil);
 routes.get("/porGenero/:nombre_genero", verifyToken, runValidation, filtroGenero);
 
 
-
 module.exports = routes;
