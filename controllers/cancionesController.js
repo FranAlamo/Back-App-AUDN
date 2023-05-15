@@ -23,6 +23,17 @@ exports.top20 = async (req, res) => {
         res.status(400).json({ error: error.message });
     }
 };
+exports.listaCanciones = async (req, res) => {
+    try {
+        const resultado = await knex
+            .select("nombre", "artista", "imagen")
+            .from("musica")
+            .limit(5);
+        res.status(200).json({ musica: resultado });
+    } catch (error) {
+        res.status(400).json({ error: error.message });
+    }
+};
 //perfil
 exports.perfil = async (req, res) => {
     const id = +req.params.id;
