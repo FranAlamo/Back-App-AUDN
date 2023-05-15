@@ -4,7 +4,7 @@ const knex = require("../config/knexfile");
 exports.listaCanciones = async (req, res) => {
     try {
         console.log(req.user);
-        const resultado = await knex.select("artista").from("musica");
+        const resultado = await knex.select("artista", "imagen").from("musica");
         res.status(200).json({ musica: resultado });
     } catch (error) {
         res.status(400).json({ error: error.message });
