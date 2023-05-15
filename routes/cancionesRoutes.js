@@ -12,6 +12,7 @@ const routes = express.Router();
 
 routes.get("/canciones", verifyToken, runValidation, listaCanciones);
 routes.get("/top20", verifyToken, runValidation, top20);
+routes.get("/listado", verifyToken, runValidation, listaCanciones);
 routes.get("/perfil", verifyToken, runValidation, perfil);
 routes.get(
   "/porGenero/:nombre_genero",
