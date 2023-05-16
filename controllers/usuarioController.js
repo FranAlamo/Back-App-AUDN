@@ -3,10 +3,10 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
 exports.registroUsuario = async (req, res) => {
-  const { email, password, name } = req.body;
+  const { name, email, password } = req.body;
   const salt = await bcrypt.genSalt(10);
   const passwordEncrypt = await bcrypt.hash(password, salt);
-  knex("usuarios")
+  knex("usuario")
     .where({ email: email })
     .then((resultado) => {
       if (resultado.length) {
@@ -15,15 +15,16 @@ exports.registroUsuario = async (req, res) => {
           .json({ error: "El usuario ya se encuentra registrado" });
         return;
       }
-      knex("usuarios")
+      knex("usuario")
         .insert({
+          nombre_usuario: name,
           email: email,
           password: passwordEncrypt,
-          nombre: name,
         })
         .then((resultado) => {
           res.status(201).json({
             mensaje: "El usuario se ha registrado correctamente",
+            usuario: { name: name, email: email, }
           });
         });
     })
@@ -35,8 +36,8 @@ exports.registroUsuario = async (req, res) => {
 exports.loginUsuario = async (req, res) => {
   const { email, password } = req.body;
 
-  knex("usuarios")
-    .where({ email: email })
+  knex("usuario")
+    .where({ email: email }).orWhere({ nombre_usuario: email })
     .then(async (resultado) => {
       if (!resultado.length) {
         res
@@ -54,18 +55,19 @@ exports.loginUsuario = async (req, res) => {
         });
         return;
       }
-
+      const usuario = {
+        name: resultado[0].nombre_usuario,
+        email: resultado[0].email,
+        id: resultado[0].id,
+      }
       const token = jwt.sign(
-        {
-          name: resultado[0].nombre,
-          email: resultado[0].email,
-          perfil: resultado[0].perfil,
-        },
+        usuario,
         process.env.TOKEN_SECRET
       );
       res.status(200).json({
         mensaje: "El usuario se ha logeado correctamente",
         token: token,
+        usuario
       });
     })
     .catch((error) => {
