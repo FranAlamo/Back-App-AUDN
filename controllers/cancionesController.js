@@ -23,7 +23,7 @@ exports.top20 = async (req, res) => {
         res.status(400).json({ error: error.message });
     }
 };
-exports.listaCanciones = async (req, res) => {
+exports.listaCancionesBusquedas = async (req, res) => {
     try {
         const resultado = await knex
             .select("nombre", "artista", "imagen")
