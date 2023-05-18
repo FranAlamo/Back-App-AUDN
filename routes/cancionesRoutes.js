@@ -7,6 +7,7 @@ const {
   listaGeneros,
   filtroArtista,
   listaCancionesBusquedas,
+  searchSongs,
 } = require("../controllers/cancionesController");
 const { verifyToken } = require("../middlewares/auth/auth");
 const { runValidation } = require("../middlewares/validator");
@@ -28,6 +29,8 @@ routes.get(
   runValidation,
   filtroArtista
 );
+
+routes.post('/songs/search', searchSongs)
 
 routes.get("/generos", verifyToken, runValidation, listaGeneros);
 
